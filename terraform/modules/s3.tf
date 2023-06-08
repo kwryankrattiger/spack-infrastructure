@@ -28,8 +28,18 @@ locals {
   }
 }
 
-resource "aws_s3_bucket_policy" "protected_binaries_restricted" {
+resource "aws_s3_bucket_policy" "spack_binaries_protected_binaries_restricted" {
   bucket = "spack-binaries"
+  policy = data.aws_iam_policy_document.protected_binaries.json
+}
+
+resource "aws_s3_bucket_policy" "spack_binaries_prs_protected_binaries_restricted" {
+  bucket = "spack-binaries-prs"
+  policy = data.aws_iam_policy_document.protected_binaries.json
+}
+
+resource "aws_s3_bucket_policy" "spack_binaries_cray_protected_binaries_restricted" {
+  bucket = "spack-binaries-cray"
   policy = data.aws_iam_policy_document.protected_binaries.json
 }
 
