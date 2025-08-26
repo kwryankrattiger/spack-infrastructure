@@ -157,8 +157,8 @@ class SpackCIBridge(object):
 
             pr_string = "pr{0}_{1}".format(pull.number, pull.head.ref)
 
-            if push and pull.updated_at < datetime.now() + timedelta(minutes=-2880):
-                # Skip further analysis of this PR if it hasn't been updated in 48 hours.
+            if push and pull.updated_at < datetime.now() + timedelta(minutes=-10080):
+                # Skip further analysis of this PR if it hasn't been updated in 1 week.
                 # This helps us avoid wasting our rate limit on PRs with merge conflicts.
                 print("Skip pushing stale PR {0}".format(pr_string))
                 backlogged = "stale"
